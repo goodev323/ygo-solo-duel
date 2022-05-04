@@ -1,0 +1,36 @@
+query selectUsers {
+  users {
+    id
+    name
+    email
+  }
+}
+
+query selectUserById($id: Int!) {
+  users_by_pk(id: $id) {
+    email
+    id
+    name
+  }
+}
+
+mutation insertUser($email: String!, $name: String!) {
+  insert_users_one(object: { email: $email, name: $name }) {
+    id
+    name
+    email
+  }
+}
+
+mutation updateUser($id: Int!) {
+  update_users_by_pk(pk_columns: { id: $id }) {
+    email
+    name
+  }
+}
+
+mutation deleteUser($id: Int!) {
+  delete_users_by_pk(id: $id) {
+    id
+  }
+}

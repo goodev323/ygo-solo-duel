@@ -1,0 +1,14 @@
+schema:
+  - ${VITE_HASURA_ENDPOINT}:
+      headers:
+        x-hasura-admin-secret: ${HASURA_GRAPHQL_ADMIN_SECRET}
+documents: ./src/**/*.graphql
+generates:
+  ./src/graphql/codegen.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-urql
+    config:
+      skipTypename: false
+      withHooks: true
